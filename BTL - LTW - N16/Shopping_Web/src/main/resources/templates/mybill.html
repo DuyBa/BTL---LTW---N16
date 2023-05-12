@@ -1,0 +1,318 @@
+<!doctype html>
+
+<html lang="en">
+	
+	<head>
+
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
+		
+		<!-- style.css For Custom Styling -->
+		<link rel="stylesheet" href="assets/styles/style.css">
+			
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+		<!-- fontawesome cdn For Icons -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" />
+		
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" 
+		crossorigin="anonymous">
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" 
+		crossorigin="anonymous">
+		</script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOM MV+rV" crossorigin="anonymous">
+		</script>
+		
+		<!--For movement of slides in carousel-->
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		
+		
+		
+		<title>E-Commerce</title>
+	
+	</head>
+
+	<body id="top">
+	
+		<!-- ==============header menu section starts here============== -->
+		<section   class="header_menu" id="header_menu">
+			<div class="container-fluid px-0 shadow">
+				<nav  class="navbar navbar-expand-lg navbar-light bg-light pb-4 ">
+					<a class="navbar-brand pl-5 pl-small-0" href="index.html">
+			 			<img src="assets/images/logo.jpg" class="img img-fluid" width="120px" alt="logo">
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav mx-auto">
+							<li class="nav-item active">
+								<a class="nav-link" th:href="@{/homepage}">Home <span class="sr-only">(current)</span></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/product}">Product</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/category}">Category</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/about}">About</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/contact}">Contact</a>
+							</li>
+							<!-- <li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+								Dropdown
+								</a>
+								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<a class="dropdown-item" href="#">Action</a>
+									<a class="dropdown-item" href="#">Another action</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="#">Something else here</a>
+								</div>
+							</li> -->
+						</ul>
+						<div class="search mr-3">
+							<a href="search.html" class="btn btn-sm btn-outline-primary">
+							Search
+							</a>
+						</div>
+						<div th:if="${session.ssacc != null}" class="cart">
+							<a th:href="@{/cart}">
+								<i class="fas fa-shopping-cart fa-2x"></i>
+								
+								<span th:if="${size!=0}" th:text="${size}"class="badge badge-pill badge-primary">
+									
+								</span>
+								<span th:if="${size==0}" class="badge badge-pill badge-primary"></span>
+							</a>
+						</div>
+						<div class="login mr-3">
+							<div th:if="${session.ssacc == null}">
+							  <a href="/login" class="btn btn-sm btn-outline-primary">Log In</a> 
+							</div>
+						</div>	
+						<div class="login mr-3">
+							<div th:if="${session.ssacc == null}">
+							  <a href="/register" class="btn btn-sm btn-outline-primary">Register</a> 
+							</div>
+						</div>	
+						<div class="login mr-3">
+							<div th:if="${session.ssacc != null}">
+								
+									<i id="accbtn" style="cursor: pointer;color: #007bff;" class="fas fa-user fa-2x "></i>
+									<div style="position: absolute;display: none;" class="menu position-absolute border border-primary" id="menu">
+										<div style="padding:0;">
+											<a style="margin: 0;padding: 0;" th:href="@{/changein4/{gm}(gm=${session.gm})}">In4</a>
+										</div>
+										<div style="padding:0;">
+											<a style="margin: 0;padding: 0;" th:href="@{/mybill}">My Bill</a>
+										</div>
+										<div style="padding:0;">
+											<a style="margin: 0;padding: 0;" href="/logout">Logout</a>
+										</div>
+										
+										
+									</div>
+								
+							</div>
+						</div>	
+					</div>
+				</nav>
+			</div>
+		</section>
+		<!-- ==============header menu section ends here============== -->
+
+
+<!-- ====================all bills here =========================== -->
+
+<!-- ==============cart starts here============== -->
+		<section class="cart py-5 my-5" id="cart">
+			<div style="border: 1px solid black; padding: 5px;" class="container ">
+				<div class="section_title text-center mb-5">
+					<h1 class="text-capitalize">My Bill</h1>
+				</div>
+				
+					<!--Grid column-->
+					
+						<!-- Card -->
+						<div class="mb-3">
+							<div class="pt-4">
+								<h5 class="mb-4">Bill (<span th:text="${quantity}"></span> Bills)</h5>
+								<!--detail start here-->
+							<table class="mx-auto" >
+								<tr style="font-size: large;">
+									<th  class="text-center px-4">ID</th>
+									<th class="text-center px-4">Status</th>
+								</tr>
+								<tr th:each="bill : ${bills}">
+									
+								
+							
+								<th style="border-bottom: 10px solid aqua;">
+								<div class="row mb-4  px-5 py-4">
+									<div class="col-md-5 col-lg-3 col-xl-3">
+										<div class="rounded mb-3 mb-md-0 " th:text="${bill.id}">
+											
+										</div>
+									</div>
+								</div>
+								</th>
+								
+								
+								<th th:if="${bill.stt == 'done'}" style="border-bottom: 10px solid green;">
+									<div class="row mb-4 px-5 py-4">
+									<div class="col-md-5 col-lg-3 col-xl-3">
+										<div class="rounded mb-3 mb-md-0" th:text="${bill.stt}">
+											
+										</div>
+									</div>
+								</div>
+								</th>
+								
+								<th th:if="${bill.stt == 'pending'}" style="border-bottom: 10px solid red;">
+									<div class="row mb-4 px-5 py-4">
+									<div class="col-md-5 col-lg-3 col-xl-3">
+										<div class="rounded mb-3 mb-md-0" th:text="${bill.stt}">
+											
+										</div>
+									</div>
+
+
+								</div>
+								</th>
+								<th>
+									<div class="col-md-5 col-lg-3 col-xl-3">
+							      	<a th:href="@{/viewbill/{code}(code=${bill.id})}" type="button" class="card-link-secondary small text-uppercase mr-3 remove-item-btn">
+								   		<i class="fas fa-eye mr-1"></i> 
+								        View
+									</a>
+									</div>
+								</th>
+							</tr>
+							</table>
+							
+
+
+							
+				<!--  <div th:each="apd : ${apds}">
+				    	
+				    	<div th:text="${apd.color}"></div>
+				  </div> -->
+								<!-- end here-->
+							</div>
+						</div>
+					
+					<!--Grid column-->
+					
+						<!-- Card -->
+						<!-- Card -->
+					
+					<!--Grid column-->
+				
+			</div>
+		</section>
+		<!-- ==============cart ends here============== -->
+
+<!-- ========================== all bills end here ================== -->
+
+
+		
+
+
+		<!-- ==============footer starts here============== -->
+		<section class="footer_section pt-5 pb-2" id="footer_section">
+			<footer>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-3 col-6 pl-5 pl-small-15">
+							<div class="footer_title">
+								<a href="index.html"><img src="assets/images/logo.jpg" width="150px" class="img img-fluid" alt="logo"></a>
+							</div>
+							<div>
+								Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit, totam est
+								illum ipsum quas ad
+								dignissimos magni veritatis natus voluptatem.
+							</div>
+						</div>
+						<div class="col-md-3 col-6">
+							<div class="footer_title pt-3 mb-3">
+								<h3>Quick Links</h3>
+							</div>
+							<div class="footer_links">
+								<ul>
+									<li><a href="about.html">About</a></li>
+									<li><a href="javascript:;">Offers & Discounts</a></li>
+									<li><a href="javascript:;">Get Coupon</a></li>
+									<li><a href="contact.html">Contact Us</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 col-6">
+							<div class="footer_title pt-3 mb-3">
+								<h3>New Products</h3>
+							</div>
+							<div class="footer_links">
+								<ul>
+									<li><a href="javascript:;">Women</a></li>
+									<li><a href="javascript:;">Men</a></li>
+									<li><a href="javascript:;">Kids</a></li>
+									<li><a href="javascript:;">Electronics</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 col-6">
+							<div class="footer_title pt-3 mb-3">
+								<h3>Support</h3>
+							</div>
+							<div class="footer_links">
+								<ul>
+									<li><a href="javascript:;">Frequently Asked Questions</a></li>
+									<li><a href="javascript:;">Terms & Conditions</a></li>
+									<li><a href="javascript:;">Privacy Policy</a></li>
+									<li><a href="javascript:;">Report A Payment Issue</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="border-top">
+					<h6 class="text-center mt-3">Copyright ©2020 All Rights Reserved
+					</h6>
+				</div>
+			</footer>
+		</section>
+		<div class="backtop">
+			<a id="button" href="#top" class="btn btn-lg btn-outline-danger" role="button">
+				<i class="fas fa-chevron-up text-dark"></i>
+			</a>
+		</div>
+		<!-- ==============footer ends here============== -->
+		
+	</body>
+</html>
+
+
+
+	<script>
+		const button = document.getElementById('accbtn');
+		const menu = document.getElementById('menu');
+		button.addEventListener('click', function() {
+			if (menu.style.display === 'none') {
+				menu.style.display = 'block';
+			} else {
+				menu.style.display = 'none';
+			}
+		});
+	</script>
